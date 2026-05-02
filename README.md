@@ -1,4 +1,8 @@
-# Urvet: Proyección de Ventas Netas - Abril 2026
+# Proyecto JAPI para forecasting
+- **J**uan Pablo Estrada Aragon
+- **A**ngel Emmanuel Moreno Velasco
+- **P**aulo Andrés Jiménez Jiménez
+- **I**rving Gael Robles Ventura
 
 Este proyecto tiene como objetivo predecir las ventas netas (monto total - devoluciones - descuentos) para la empresa **Urvet de México**. Se utiliza un enfoque de ensamble híbrido que integra modelos estadísticos, de aprendizaje profundo y algoritmos de clasificación/regresión.
 
@@ -16,7 +20,7 @@ A continuación se detalla la función de cada directorio para mantener la modul
 
 ### `config/`
 * **¿Para qué sirve?** Almacenar toda la configuración estática y parámetros que no deben estar "hardcodeados" en el código.
-* **¿Qué va aquí?** * Archivos `.yaml` o `.json` con hiperparámetros de los modelos.
+* **¿Qué va aquí?**
     * Configuraciones de conexión a bases de datos o rutas de archivos.
     * Variables de entorno específicas del proyecto (ej. `settings.py`).
 
@@ -29,10 +33,22 @@ A continuación se detalla la función de cada directorio para mantener la modul
 
 ---
 
+### `data/`
+* **¿Para qué sirve?** Directorio que almacena todos los datos crudos.
+* **¿Qué va aquí?:** Archivos `.csv` o `.xlsx`, todo lo relacionado a formatos crudos.
+
+---
+
 ### `models/`
 * **¿Para qué sirve?** Repositorio de artefactos finales y definiciones de estructura de datos.
-* **¿Qué va aquí?:** Archivos `.pkl`, `.h5` o `.bst` (pesos de LSTM, modelos SARIMAX entrenados).
-    * **Esquemas:** Definiciones de tablas o clases que representan los datos de Urvet (si se usa un ORM o validadores de datos).
+* **¿Qué va aquí?:** Archivos `.pkl`, `.h5`, `.json` o `.bst` (pesos de LSTM, modelos SARIMAX entrenados).
+
+---
+
+### `notebooks/`
+* **¿Para qué sirve?** Espacio exclusivo para la investigación y descubrimiento de insights antes de pasar a producción.
+* **¿Qué va aquí?:** Análisis de tendencias, correlaciones, detección de outliers y visualizaciones de ventas históricas, además de pruebas en diferentes modelos.
+    * **Nota:** Solo debe contener archivos `.ipynb` o reportes en `.html`. No debe haber código productivo aquí.
 
 ---
 
@@ -44,9 +60,8 @@ A continuación se detalla la función de cada directorio para mantener la modul
 
 ---
 
-### `eda/` (Exploratory Data Analysis)
-* **¿Para qué sirve?** Espacio exclusivo para la investigación y descubrimiento de insights antes de pasar a producción.
-* **¿Qué va aquí?:** Análisis de tendencias, correlaciones, detección de outliers y visualizaciones de ventas históricas.
-    * **Nota:** Solo debe contener archivos `.ipynb` o reportes en `.html`. No debe haber código productivo aquí.
+### `utils/`
+* **¿Para qué sirve?** Sirve para centralizar funciones que si bien, pueden ser incluidas como métodos de clases en otros scripts, tienden a ser más universales, como por ejemplo, la extración y lectura de archivos, establecimiento correcto de tipo de datos, timestamps específicos, etc.
+* **¿Qué va aquí?:** Archivos `.py`.
 
 ---
