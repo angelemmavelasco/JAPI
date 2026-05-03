@@ -65,3 +65,15 @@ A continuación se detalla la función de cada directorio para mantener la modul
 * **¿Qué va aquí?:** Archivos `.py`.
 
 ---
+
+## Metodología
+### Contexto general de la empresa
+### Datos
+### EDA
+#### Recopilación
+#### Limpieza y trasformación de los datos
+#### Análisis estadístico descriptivo
+#### Visualización
+#### Pruebas de hipótesis
+### Exportación
+### Hallazgos y conclusiones
