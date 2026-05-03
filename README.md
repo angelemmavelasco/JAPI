@@ -72,8 +72,7 @@ A continuación se detalla la función de cada directorio para mantener la modul
 ### EDA
 #### Recopilación
 #### Limpieza y trasformación de los datos
-#### Análisis estadístico descriptivo
-#### Visualización
+#### Análisis estadístico descriptivo y Visualización
 #### Pruebas de hipótesis
 ### Exportación
 ### Hallazgos y conclusiones
