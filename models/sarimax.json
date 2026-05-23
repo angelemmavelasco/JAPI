@@ -1,0 +1,774 @@
+{
+    "2026-05-18_7d415573-9a01-4965-9a1a-ef5f1f8f2737": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-03-31"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                1
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 23837.639188648063,
+            "bic": 23875.225333080987,
+            "log_likelihood": -11910.819594324032,
+            "nobs": 820
+        },
+        "coeficientes": {
+            "non_work_day": 1309.966093261944,
+            "is_month_end": 2472124.9572684276,
+            "close_month_zone": 1496219.5442458834,
+            "ar.L1": 0.3373900804277002,
+            "ma.L1": -0.0046494102290334976,
+            "ar.S.L7": 1.00498313088673,
+            "ma.S.L7": -0.9293812354760428,
+            "sigma2": 564733598510.674
+        }
+    },
+    "2026-05-18_facddc20-4a78-43e3-aae0-4d70a1a5961c": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-03-31"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 23861.70901710896,
+            "bic": 23889.90601914993,
+            "log_likelihood": -11924.85450855448,
+            "nobs": 820
+        },
+        "coeficientes": {
+            "is_month_end": 2472124.957270553,
+            "close_month_zone": 1496219.544250016,
+            "ar.L1": 0.3349192307684597,
+            "ar.S.L7": 1.0049695379843315,
+            "ma.S.L7": -0.9291357495853261,
+            "sigma2": 563397422529.2063
+        }
+    },
+    "2026-05-18_cc2ed1c5-5e7c-4f40-8f44-89a6ade87775": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-03-31"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 916.550868026266,
+            "bic": 944.7478700672361,
+            "log_likelihood": -452.275434013133,
+            "nobs": 820
+        },
+        "coeficientes": {
+            "is_month_end": 1.3954238108899504,
+            "close_month_zone": 0.37807855698417225,
+            "ar.L1": 0.1820208355707154,
+            "ar.S.L7": 1.0046839470778575,
+            "ma.S.L7": -1.067835889157129,
+            "sigma2": 0.15362088950355798
+        }
+    },
+    "2026-05-18_665a0e47-3b7a-443a-a7c3-1ba49a56d76f": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-04-30"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 956.9066590035279,
+            "bic": 985.3213390889819,
+            "log_likelihood": -472.45332950176396,
+            "nobs": 850
+        },
+        "coeficientes": {
+            "is_month_end": 1.4227764236390286,
+            "close_month_zone": 0.3810775799735419,
+            "ar.L1": 0.18415358862718792,
+            "ar.S.L7": 1.004846884873635,
+            "ma.S.L7": -1.0634108135074825,
+            "sigma2": 0.15620619774077163
+        }
+    },
+    "2026-05-18_5869f0c9-2636-4c93-9e6c-f41ed04af64f": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-04-30"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                1,
+                1
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 967.3416673718017,
+            "bic": 1000.4754806146632,
+            "log_likelihood": -476.67083368590085,
+            "nobs": 850
+        },
+        "coeficientes": {
+            "is_month_end": 1.42324546106598,
+            "close_month_zone": 0.38287579087621765,
+            "ar.L1": 0.17734388916284646,
+            "ma.L1": -1.008132690878428,
+            "ar.S.L7": 1.0039185880012758,
+            "ma.S.L7": -0.9463655086834079,
+            "sigma2": 0.1743425734182446
+        }
+    },
+    "2026-05-18_f9997a7a-75a6-4dc3-bc7a-77579779c83a": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-04-30"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                0,
+                1,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 957.2710205198724,
+            "bic": 980.9081791441267,
+            "log_likelihood": -473.6355102599362,
+            "nobs": 850
+        },
+        "coeficientes": {
+            "is_month_end": 1.424512102554084,
+            "close_month_zone": 0.37898073461711623,
+            "ar.L1": 0.19045314196004642,
+            "ma.S.L7": -0.9087491118006045,
+            "sigma2": 0.18032136050888212
+        }
+    },
+    "2026-05-18_c7aadd33-950d-4f93-ad70-1eb3242534c7": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-03-31"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                1
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 23837.639188362074,
+            "bic": 23875.225332795,
+            "log_likelihood": -11910.819594181037,
+            "nobs": 820
+        },
+        "coeficientes": {
+            "non_work_day": 1309.9660932615234,
+            "is_month_end": 2472124.957268464,
+            "close_month_zone": 1496219.5442459118,
+            "ar.L1": 0.3373942708816984,
+            "ma.L1": -0.0046566598002796104,
+            "ar.S.L7": 1.0049833731592026,
+            "ma.S.L7": -0.929381713416317,
+            "sigma2": 564733598511.0115
+        }
+    },
+    "2026-05-18_c0100035-8fbb-419f-8bf0-6a3c22124917": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-03-31"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 23861.709017107976,
+            "bic": 23889.906019148948,
+            "log_likelihood": -11924.854508553988,
+            "nobs": 820
+        },
+        "coeficientes": {
+            "is_month_end": 2472124.9572705547,
+            "close_month_zone": 1496219.5442500154,
+            "ar.L1": 0.3349192270715262,
+            "ar.S.L7": 1.004969538369356,
+            "ma.S.L7": -0.9291357348455994,
+            "sigma2": 563397422529.2056
+        }
+    },
+    "2026-05-18_198e080b-cf6e-465b-900e-2e3676df14d9": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-03-31"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 916.5508717470846,
+            "bic": 944.7478737880547,
+            "log_likelihood": -452.2754358735423,
+            "nobs": 820
+        },
+        "coeficientes": {
+            "is_month_end": 1.3954039042265807,
+            "close_month_zone": 0.3779560301174193,
+            "ar.L1": 0.1820544995218784,
+            "ar.S.L7": 1.004684023230269,
+            "ma.S.L7": -1.0678269680083152,
+            "sigma2": 0.1536273468078353
+        }
+    },
+    "2026-05-18_8b74203c-3384-41ef-a962-6e7c9bf31b69": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-04-30"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 956.9066572280183,
+            "bic": 985.3213373134722,
+            "log_likelihood": -472.45332861400914,
+            "nobs": 850
+        },
+        "coeficientes": {
+            "is_month_end": 1.4227854271372533,
+            "close_month_zone": 0.38110923824280196,
+            "ar.L1": 0.18413889154500537,
+            "ar.S.L7": 1.0048472044061798,
+            "ma.S.L7": -1.0634100648334872,
+            "sigma2": 0.15620605283753333
+        }
+    },
+    "2026-05-18_172dd689-2185-481f-96ec-6ba19fd7e841": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-04-30"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                1,
+                1
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 967.341662169875,
+            "bic": 1000.4754754127365,
+            "log_likelihood": -476.6708310849375,
+            "nobs": 850
+        },
+        "coeficientes": {
+            "is_month_end": 1.4233295565994881,
+            "close_month_zone": 0.3828935694348181,
+            "ar.L1": 0.17730194121976164,
+            "ma.L1": -1.0081383050079782,
+            "ar.S.L7": 1.0039195686241411,
+            "ma.S.L7": -0.9463809055328839,
+            "sigma2": 0.17434810055750635
+        }
+    },
+    "2026-05-18_0dfacf06-6c4a-48c2-8c64-f0b889343670": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-04-30"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                0,
+                1,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 957.2710205206674,
+            "bic": 980.9081791449217,
+            "log_likelihood": -473.6355102603337,
+            "nobs": 850
+        },
+        "coeficientes": {
+            "is_month_end": 1.424511771068252,
+            "close_month_zone": 0.37898137783768754,
+            "ar.L1": 0.19045306138684476,
+            "ma.S.L7": -0.9087490861879072,
+            "sigma2": 0.18032138979980142
+        }
+    },
+    "2026-05-20_722768b8-9a63-4dd6-8630-921f4721110f": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-03-31"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                1
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 23837.639188362074,
+            "bic": 23875.225332795,
+            "log_likelihood": -11910.819594181037,
+            "nobs": 820
+        },
+        "coeficientes": {
+            "non_work_day": 1309.9660932615234,
+            "is_month_end": 2472124.957268464,
+            "close_month_zone": 1496219.5442459118,
+            "ar.L1": 0.3373942708816984,
+            "ma.L1": -0.0046566598002796104,
+            "ar.S.L7": 1.0049833731592026,
+            "ma.S.L7": -0.929381713416317,
+            "sigma2": 564733598511.0115
+        }
+    },
+    "2026-05-20_dfa35401-f9be-419f-8d61-d1d5817edf87": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-03-31"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 23861.709017107976,
+            "bic": 23889.906019148948,
+            "log_likelihood": -11924.854508553988,
+            "nobs": 820
+        },
+        "coeficientes": {
+            "is_month_end": 2472124.9572705547,
+            "close_month_zone": 1496219.5442500154,
+            "ar.L1": 0.3349192270715262,
+            "ar.S.L7": 1.004969538369356,
+            "ma.S.L7": -0.9291357348455994,
+            "sigma2": 563397422529.2056
+        }
+    },
+    "2026-05-20_110ef60d-701b-4002-b1e3-d3a2785095a5": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-03-31"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 916.5508717470846,
+            "bic": 944.7478737880547,
+            "log_likelihood": -452.2754358735423,
+            "nobs": 820
+        },
+        "coeficientes": {
+            "is_month_end": 1.3954039042265807,
+            "close_month_zone": 0.3779560301174193,
+            "ar.L1": 0.1820544995218784,
+            "ar.S.L7": 1.004684023230269,
+            "ma.S.L7": -1.0678269680083152,
+            "sigma2": 0.1536273468078353
+        }
+    },
+    "2026-05-20_5f81d052-e884-446c-b2e6-f05e437988c7": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-04-30"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 956.9066572280183,
+            "bic": 985.3213373134722,
+            "log_likelihood": -472.45332861400914,
+            "nobs": 850
+        },
+        "coeficientes": {
+            "is_month_end": 1.4227854271372533,
+            "close_month_zone": 0.38110923824280196,
+            "ar.L1": 0.18413889154500537,
+            "ar.S.L7": 1.0048472044061798,
+            "ma.S.L7": -1.0634100648334872,
+            "sigma2": 0.15620605283753333
+        }
+    },
+    "2026-05-20_ae646cec-4bbd-4cec-a386-07ba61acdb0d": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-04-30"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                1,
+                1
+            ],
+            "seasonal_order": [
+                1,
+                0,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 967.341662169875,
+            "bic": 1000.4754754127365,
+            "log_likelihood": -476.6708310849375,
+            "nobs": 850
+        },
+        "coeficientes": {
+            "is_month_end": 1.4233295565994881,
+            "close_month_zone": 0.3828935694348181,
+            "ar.L1": 0.17730194121976164,
+            "ma.L1": -1.0081383050079782,
+            "ar.S.L7": 1.0039195686241411,
+            "ma.S.L7": -0.9463809055328839,
+            "sigma2": 0.17434810055750635
+        }
+    },
+    "2026-05-20_bdaacf2d-a7c0-4769-8829-0a08a971be6c": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-04-30"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                0,
+                1,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 957.2710205206674,
+            "bic": 980.9081791449217,
+            "log_likelihood": -473.6355102603337,
+            "nobs": 850
+        },
+        "coeficientes": {
+            "is_month_end": 1.424511771068252,
+            "close_month_zone": 0.37898137783768754,
+            "ar.L1": 0.19045306138684476,
+            "ma.S.L7": -0.9087490861879072,
+            "sigma2": 0.18032138979980142
+        }
+    },
+    "2026-05-21_8f319c72-c3fd-4964-8b6f-ee6d28e1562b": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-04-30"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                0,
+                1,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 24144.555689835484,
+            "bic": 24168.192848459737,
+            "log_likelihood": -12067.277844917742,
+            "nobs": 850
+        },
+        "coeficientes": {
+            "is_month_end": 1384981.8884852089,
+            "close_month_zone": 369351.37888909894,
+            "ar.L1": 0.20140849213843084,
+            "ma.S.L7": -0.870594823206359,
+            "sigma2": 312840525053.14655
+        }
+    },
+    "2026-05-21_0898cd94-aaf3-47e6-8e4d-0a58d8871604": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-04-30"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                0,
+                1,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 24144.555689835484,
+            "bic": 24168.192848459737,
+            "log_likelihood": -12067.277844917742,
+            "nobs": 850
+        },
+        "coeficientes": {
+            "is_month_end": 1384981.8884852089,
+            "close_month_zone": 369351.37888909894,
+            "ar.L1": 0.20140849213843084,
+            "ma.S.L7": -0.870594823206359,
+            "sigma2": 312840525053.14655
+        }
+    },
+    "2026-05-21_aad1fee4-9c69-443b-ba9a-d35c28267737": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-04-30"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                0,
+                1,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 957.2710205220852,
+            "bic": 980.9081791463395,
+            "log_likelihood": -473.6355102610426,
+            "nobs": 850
+        },
+        "coeficientes": {
+            "is_month_end": 1.4245120225668038,
+            "close_month_zone": 0.3789807452032173,
+            "ar.L1": 0.1904530537853211,
+            "ma.S.L7": -0.908749104819358,
+            "sigma2": 0.18032136331504645
+        }
+    },
+    "2026-05-23_cdb9d327-b4c4-40fa-8a4b-91fcb6f8dd7d": {
+        "train_period": {
+            "start_date": "2024-01-02",
+            "end_date": "2026-05-22"
+        },
+        "hyperparameters": {
+            "order": [
+                1,
+                0,
+                0
+            ],
+            "seasonal_order": [
+                0,
+                1,
+                1,
+                7
+            ],
+            "enforce_stationarity": false,
+            "enforce_invertibility": false
+        },
+        "metrics": {
+            "aic": 997.2197350034534,
+            "bic": 1020.9869245964422,
+            "log_likelihood": -493.6098675017267,
+            "nobs": 872
+        },
+        "coeficientes": {
+            "is_month_end": 1.368248852050906,
+            "close_month_zone": 0.369787397608543,
+            "ar.L1": 0.18861548773637063,
+            "ma.S.L7": -0.9033601290397149,
+            "sigma2": 0.18362701764432557
+        }
+    }
+}

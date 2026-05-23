@@ -1,0 +1,70 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {0.1}Introducción}{2}{}%
+\contentsline {section}{\numberline {0.2}Objetivos}{3}{}%
+\contentsline {subsection}{\numberline {0.2.1}Objetivo General}{3}{}%
+\contentsline {subsection}{\numberline {0.2.2}Objetivos Específicos}{3}{}%
+\contentsline {section}{\numberline {0.3}Metodología}{3}{}%
+\contentsline {subsection}{\numberline {0.3.1}Arquitectura del Repositorio y Estructura del Proyecto}{4}{}%
+\contentsline {subsubsection}{Capa de configuración y ejecución principal}{4}{}%
+\contentsline {subsubsection}{Capa de datos y artefactos de modelado}{5}{}%
+\contentsline {subsubsection}{Entorno de experimentación y desarrollo}{5}{}%
+\contentsline {subsubsection}{Capa de lógica reutilizable y utilidades}{5}{}%
+\contentsline {subsection}{\numberline {0.3.2}Capa de resultados}{6}{}%
+\contentsline {subsection}{\numberline {0.3.3}Adquisición y Modelado de Datos}{6}{}%
+\contentsline {subsubsection}{Conexión a base de datos}{6}{}%
+\contentsline {subsubsection}{Extracción y consumo}{7}{}%
+\contentsline {subsubsection}{Modelado de datos}{9}{}%
+\contentsline {paragraph}{Primer acercamiento.}{9}{}%
+\contentsline {subsection}{\numberline {0.3.4}Análisis Exploratorio de Datos}{10}{}%
+\contentsline {subsubsection}{Aislamiento del Entorno de Ejecución y Extracción Core}{11}{}%
+\contentsline {subsubsection}{Carga de Datos e Inspección de Estructuras}{12}{}%
+\contentsline {subsubsection}{Evaluación de Completitud e Integridad del Corpus}{12}{}%
+\contentsline {subsection}{\numberline {0.3.5}Limpieza y Normalización}{13}{}%
+\contentsline {subsubsection}{Estandarización de Formatos y Tipos de Datos}{13}{}%
+\contentsline {subsubsection}{Imputación de Valores Nulos}{14}{}%
+\contentsline {subsubsection}{Reconocimiento de Medidas de Tendencia Central y Análisis de Anomalías}{15}{}%
+\contentsline {subsubsection}{Visualización de Distribuciones}{16}{}%
+\contentsline {paragraph}{Exploración General del Corpus Transaccional.}{16}{}%
+\contentsline {paragraph}{Aislamiento de la Operación Tradicional.}{17}{}%
+\contentsline {paragraph}{Segmentaci\'on por Centros de Distribuci\'on.}{18}{}%
+\contentsline {paragraph}{Criterio Estad\'istico contra la Naturaleza del Negocio.}{19}{}%
+\contentsline {paragraph}{Evaluación Operativa por Centros de Distribución.}{20}{}%
+\contentsline {subsubsection}{Agrupaciones y Transformaciones de Frecuencia}{21}{}%
+\contentsline {paragraph}{Hallazgo de Anomalías Negativas Críticas.}{21}{}%
+\contentsline {paragraph}{Identificación Visual de Estacionalidad Semanal.}{22}{}%
+\contentsline {paragraph}{Estrategias Opuestas para el Tratamiento de Valores Atípicos.}{22}{}%
+\contentsline {paragraph}{Consolidación de la Serie Limpia}{23}{}%
+\contentsline {subsubsection}{Pruebas de Hipótesis y Diagnóstico de Componentes}{24}{}%
+\contentsline {paragraph}{Estacionalidad y Descomposición Estructural.}{24}{}%
+\contentsline {paragraph}{Prueba de Estacionariedad por Raíz Unitaria}{27}{}%
+\contentsline {subsection}{\numberline {0.3.6}Ingeniería de Características}{28}{}%
+\contentsline {subsection}{\numberline {0.3.7}Machine Learning, Deep Learning y Modelos Estadísticos Clásicos}{29}{}%
+\contentsline {subsubsection}{SARIMAX}{29}{}%
+\contentsline {paragraph}{Desglose Matemático.}{29}{}%
+\contentsline {paragraph}{Entrenamiento Algorítmico y Transformaciones.}{30}{}%
+\contentsline {paragraph}{Evaluación de Métricas y Ajustes.}{31}{}%
+\contentsline {paragraph}{Implementación en el Pipeline.}{31}{}%
+\contentsline {subsubsection}{Prophet}{33}{}%
+\contentsline {paragraph}{Entrenamiento e Implementación.}{33}{}%
+\contentsline {paragraph}{Construcción del Vector de Predicción.}{34}{}%
+\contentsline {paragraph}{Evaluación de Métricas y Ajustes.}{35}{}%
+\contentsline {subsubsection}{LSTM}{36}{}%
+\contentsline {paragraph}{Desglose Matemático.}{36}{}%
+\contentsline {paragraph}{Entrenamiento.}{37}{}%
+\contentsline {paragraph}{Evaluación de Métricas y Análisis Comparativo.}{38}{}%
+\contentsline {paragraph}{Interpretación Analítica del Desempeño.}{39}{}%
+\contentsline {subsubsection}{KNN}{39}{}%
+\contentsline {paragraph}{Desglose Matemático y Complejidad Computacional.}{39}{}%
+\contentsline {paragraph}{Implementación.}{41}{}%
+\contentsline {paragraph}{Entrenamiento.}{42}{}%
+\contentsline {paragraph}{Comparación con Librerías Estándar.}{42}{}%
+\contentsline {subsubsection}{Regresión Logística}{43}{}%
+\contentsline {paragraph}{Desglose Matemático y Complejidad Computacional.}{43}{}%
+\contentsline {paragraph}{Implementación.}{44}{}%
+\contentsline {paragraph}{Entrenamiento.}{45}{}%
+\contentsline {paragraph}{Comparación con Librerías Estándar.}{46}{}%
+\contentsline {section}{\numberline {0.4}Resultados}{47}{}%
+\contentsline {subsection}{\numberline {0.4.1}Comparativa de Implementaciones}{47}{}%
+\contentsline {subsection}{\numberline {0.4.2}Hallazgos y Posibles Mejoras}{47}{}%
+\contentsline {section}{\numberline {0.5}Conclusiones}{48}{}%
+\contentsline {subsection}{\numberline {0.5.1}Propuesta de Valor e Implementación Operativa}{48}{}%

@@ -1,0 +1,35 @@
+{
+  "base_non_work_days": {
+    "2024": {
+      "Año Nuevo": "2024-01-01",
+      "Natalicio de Benito Juárez": "2024-03-18",
+      "Jueves Santo": "2024-03-28",
+      "Viernes Santo": "2024-03-29",
+      "Día del Trabajo": "2024-05-01",
+      "Día de la Independencia": "2024-09-16",
+      "Día de Muertos": "2024-11-02",
+      "Día de la Revolución Mexicana": "2024-11-18",
+      "Nochebuena": "2024-12-24"
+    },
+    "2025": {
+      "Año Nuevo": "2025-01-01",
+      "Natalicio de Benito Juárez": "2025-03-17",
+      "Jueves Santo": "2025-04-17",
+      "Viernes Santo": "2025-04-18",
+      "Día del Trabajo": "2025-05-01",
+      "Día de la Independencia": "2025-09-16",
+      "Día de la Revolución Mexicana": "2025-11-17",
+      "Nochebuena": "2025-12-24"
+    },
+    "2026": {
+      "Año Nuevo": "2026-01-01",
+      "Natalicio de Benito Juárez": "2026-03-16",
+      "Jueves Santo": "2026-04-02",
+      "Viernes Santo": "2026-04-03",
+      "Día del Trabajo": "2026-05-01",
+      "Día de la Independencia": "2026-09-16",
+      "Día de la Revolución Mexicana": "2026-11-16",
+      "Nochebuena": "2026-12-24"
+    }
+  }
+}
