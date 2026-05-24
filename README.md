@@ -219,13 +219,120 @@ SSH_PORT=puerto_de_acceso_a_la_instancia
 
 ```
 
-* Correr el programa
+* Correr el programa principal
 
-``` bash
-python
+Para iniciar el pipeline de extracción, entrenamiento y pronóstico, ejecuta el script principal desde la raíz del proyecto:
+
+```bash
+python core/main.py
 
 ```
 
+
+
+El programa está diseñado para ser 100% autoguiado. Una vez ejecutado el comando anterior, la terminal interactuará contigo paso a paso. En la mayoría de los casos, puedes simplemente presionar Enter para aceptar los valores por defecto recomendados.
+
+El flujo de configuración te pedirá lo siguiente:
+
+* Conexión a Base de Datos.
+    * Presiona `Enter` o `1` si configuraste tu archivo `.env` para extraer datos en tiempo real.
+    * Presiona `0` para activar el modo local (usará un archivo `sales.csv` previamente descargado).
+
+
+* Filtrado de Rutas (Opcional).
+    * Podrás excluir o incluir rutas de venta específicas escribiéndolas separadas por comas (ejemplo: `90, 95`).
+
+* Selección de Variables.
+    * Te pedirá confirmar cuál es tu columna objetivo (por defecto `net_price`) y tu columna de tiempo (por defecto `sale_date`).
+* Manejo de Outliers.
+    * Elegirás un método estadístico para limpiar valores atípicos o negativos (recomendado y por defecto: `linear`).
+* Rango de Entrenamiento.
+    * Definirás las fechas límite para que el modelo SARIMAX aprenda del comportamiento histórico.
+* Rango de Pronóstico.
+    * Establecerás el periodo futuro que deseas predecir.
+> Nota: Por regla matemática del modelo, la fecha de inicio del pronóstico debe ser estrictamente posterior al final del entrenamiento.
+
+
+* Exportación de Resultados.
+    * Tras evaluar el modelo y generar la predicción, el sistema te mostrará el volumen total pronosticado y te pedirá un nombre para guardar el archivo de salida `.csv` dentro del directorio de pronósticos.
+
+#### Ejemplo de una sesión en la terminal
+
+A continuación se muestra un ejemplo real de cómo se visualiza la interacción en la consola al correr el script. En este caso, el usuario elige el modo local, excluye la ruta 90, usa las variables por defecto y pronostica un mes de ventas:
+
+```text
+((venv) ) angelvelasco@Mac-mini-de-Angel JAPI % python core/main.py
+
+Credentials Configuration
+
+Did you configure an environment variables file?
+ (This is necessary to connect to the database. If you don't have them,
+ the system will only allow you to use existing local csv records).
+
+ [Enter] or [1] if you have them
+ [0] to use local files only
+ > 0
+
+-> Local mode activated. Existing csv records will be used.
+
+Cleaner object was instanced successfully
+
+exclude routes (separated by comma, e.g.: 90, 95) [press enter for none]: 90
+include routes (separated by comma, e.g.: 90, 95) [press enter for all]: 
+
+prepare_data method was applied on base Dataframe
+
+please enter the target column name (y) [enter for "net_price"]: 
+please enter the date column name (index) [enter for "sale_date"]: 
+
+net_price as pd.Series object was created successfully
+
+available methods: set_nan, drop, linear, neighbor_average, zero, ffill
+select a method to remove outliers [press enter for "linear"]: 
+
+outliers was removed from pd.Series using method: linear
+
+training range dates
+start training from [Enter for 2024-01-01]: 
+end training on [Enter for 2026-05-22]: 
+
+Data was converted into pd.Series (Range: 2024-01-01 a 2026-05-22)
+sale_date
+2024-01-01    125000.50
+2024-01-02    132450.00
+2024-01-03    128900.25
+2024-01-04    141000.00
+2024-01-05    145000.80
+Name: net_price, dtype: float64
+
+Non business days to use
+['2026-01-01', '2026-02-02', '2026-03-16', ...]
+
+                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:              net_price   No. Observations:                  873
+Model:             SARIMAX(1, 0, 0)x(0, 1, 1, 7)   Log Likelihood       -1205.4
+Date:                Sun, 24 May 2026   AIC                             2416.8
+...
+==============================================================================
+
+ Forecast Date Ranges Configuration 
+In order to get a correct forecast, setting a date after the end training date is mandatory.
+In this case: 2026-05-22 < start_forecast_date
+
+Start forecast from [Enter for 2026-05-24]:
+End forecast on [Enter for 2026-06-24]:
+
+Confirmed range From 2026-05-24 to 2026-06-24
+
+Generating exogenous matrix for forecast from 2026-05-24 to 2026-06-24...
+forecast made successful
+Forecast for period 2026-05-24 - 2026-06-24: 36.25048998977715
+Save file output with predictions as: forecast_junio_2026
+
+```
+
+>Como nota adicional, el resultado esta escalado para mejores resultados del modelo. El resultado 36.25048998977715 está en millones, por lo que realmente significa 36,250,489.98 pesos mexicanos.
 
 ## Referencias
 
