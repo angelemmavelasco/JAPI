@@ -176,9 +176,55 @@ Utilizando el módulo de utilidades de limpieza, el flujo realiza las siguientes
 
 El modelo extrae la lista de días festivos del archivo de configuración e interactúa con el generador de características para construir una matriz exógena alineada con las fechas de entrenamiento. El proceso restringe la atención a las señales de fin de mes y zonas de cierre de mes. Con esto, se ejecuta el entrenamiento del algoritmo *SARIMAX*, retornando el objeto ajustado y sus respectivos metadatos de control.
 
-##### 4. Generación de Pronósticos y Persistencia
+##### Generación de Pronósticos y Persistencia
 
 El sistema proyecta las predicciones utilizando la lógica del modelo para el periodo futuro especificado a través de los argumentos de ejecución. Una vez calculado el pronóstico, la terminal solicita una interacción con el usuario mediante una entrada de texto para definir el nombre del archivo final. Los resultados se guardan de manera estructurada en formato de valores separados por comas dentro del directorio *forecast/*.
+
+#### Ejemplo de ejecución
+
+* Clonar el repo e instalar dependencias
+
+``` bash
+
+# Clonar el repositorio
+git clone git@github.com:angelemmavelasco/JAPI.git
+cd JAPI
+
+# Activar el entorno virtual
+source venv/bin/activate
+
+# Instalar las librerías necesarias
+pip install -r requirements.txt
+
+```
+
+* Configurar variables de entorno (opcional)
+``` bash
+nano .env
+
+```
+
+``` bash
+DB_HOST=el_host_de_la_base_de_datos
+DB_PASSWORD=contraseña_de_la_base_de_datos
+DB_NAME=nombre_de_la_base_de_datos
+DB_PORT=puerto_de_acceso_de_la_base
+DB_USER=usuario_de_ingreso_a_la_base
+
+SSH_IP=ip_de_instancia_tunel
+SSH_PRIVATE_KEY=directorio_de_la_clave_privada
+SSH_USERNAME=usuario_de_la_instancia
+SSH_PORT=puerto_de_acceso_a_la_instancia
+
+
+```
+
+* Correr el programa
+
+``` bash
+python
+
+```
 
 
 ## Referencias

@@ -243,6 +243,7 @@ class SarimaxModel:
                             predict_to: str,
                             y: pd.Series = None,
                             X_exog: pd.DataFrame = None,
+                            X_exog_future: pd.DataFrame = None,
                             holidays: list = None
                             ):
             
@@ -252,6 +253,9 @@ class SarimaxModel:
             
         if X_exog is not None:
             X_exog = X_exog.astype(float)
+
+        if X_exog_future is not None:
+            X_exog_future = X_exog_future.astype(float)
 
         #extract the best model based on an id or by searching
         meta = self.get_model_metadata(params_id=params_id)
@@ -267,9 +271,6 @@ class SarimaxModel:
             
         ordered_params = [meta["coeficientes"][name] for name in model.param_names]
             
-        #generate exog for future
-        X_exog_future = self.generate_exog_matrix(start_date=predict_from, end_date=predict_to, holidays_source=holidays)
-        X_exog_future = X_exog_future[['is_month_end', 'close_month_zone']]
         #which is gonna be the predicted horizon
         fitted_model = model.filter(ordered_params)
         

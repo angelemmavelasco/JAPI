@@ -1,6 +1,7 @@
 from src.db_conn import DatabaseConnection
 from src.models import SarimaxModel
 from src.cleaner import Cleaner
+from utils.utils import parse_date
 from config.settings import (
     DB_HOST,
     DB_PASSWORD,
@@ -17,41 +18,62 @@ from config.settings import (
 )
 import pandas as pd
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
 
-def main(*,
-         train_from: str = None,
-         train_to: str = None,
-         start_pred: str = None,
-         end_pred: str = None
-         ):
+def main():
 
-    #instance a new database connection
-    db_conn = DatabaseConnection(
-        DB_HOST=DB_HOST,
-        DB_NAME=DB_NAME,
-        DB_PASSWORD=DB_PASSWORD,
-        DB_PORT=DB_PORT,
-        DB_USER=DB_USER,
-        SSH_PRIVATE_KEY=SSH_PRIVATE_KEY,
-        SSH_IP=SSH_IP,
-        SSH_USERNAME=SSH_USERNAME,
-        SSH_PORT=SSH_PORT
-        )
+    print("Credentials Configuration\n")
+    ask_use_envs = input(
+        "Did you configure an environment variables file?\n"
+        " (This is necessary to connect to the database. If you don't have them,\n"
+        " the system will only allow you to use existing local csv records).\n\n"
+        " [Enter] or [1] if you have them\n"
+        " [0] to use local files only\n"
+        " > "
+    ).strip()
 
-    #set the query to bring sales data
-    sales_query = """
-    SELECT sale_date, net_price, route_id FROM sale_transactions
-    """
-    #fix output path
-    save_as_sales_query = input('query was executed successfully. how do you want to save the generated csv: ')
-    output_path = f'{DATA_DIR}/{save_as_sales_query}.csv'
+    if ask_use_envs in ("", "1"):
+        use_envs = True
+        print("\n-> Database connection enabled.\n")
+    else:
+        use_envs = False
+        print("\n-> Local mode activated. Existing csv records will be used.\n")
+    
+    
+    if use_envs:
+
+        #instance a new database connection
+        db_conn = DatabaseConnection(
+            DB_HOST=DB_HOST,
+            DB_NAME=DB_NAME,
+            DB_PASSWORD=DB_PASSWORD,
+            DB_PORT=DB_PORT,
+            DB_USER=DB_USER,
+            SSH_PRIVATE_KEY=SSH_PRIVATE_KEY,
+            SSH_IP=SSH_IP,
+            SSH_USERNAME=SSH_USERNAME,
+            SSH_PORT=SSH_PORT
+            )
+
+        #set the query to bring sales data
+        sales_query = """
+        SELECT sale_date, net_price, route_id FROM sale_transactions
+        """
+        #fix output path
+        save_as_sales_query = input('query was executed successfully. how do you want to save the generated csv: ')
+        output_path = f'{DATA_DIR}/sales.csv'
 
 
-    #convert query to a csv and convert it as a df
-    sales = db_conn.query_to_csv(query=sales_query, output_file_name=output_path)
+        #convert query to a csv and convert it as a df
+        sales = db_conn.query_to_csv(query=sales_query, output_file_name=output_path)
+
+    else:
+
+        sales = pd.read_csv(f'{DATA_DIR}/sales.csv')
+
+
     sales['route_id'] = sales['route_id'].astype('Int64').astype(str)
 
 
@@ -154,26 +176,71 @@ def main(*,
     print("\nforecast range dates")
 
     today = datetime.now().date()
-    one_month_from_now = today + relativedelta(month=1)
+    one_month_from_now = today + relativedelta(months=1)
 
-    in_start_pred = input(f'start forecast from [Enter for {today}]: ').strip()
-    start_pred_secure = in_start_pred if in_start_pred else today
+    train_to_date = parse_date(train_to_secure)
 
-    in_end_pred = input(f'end forecast on [Enter for {one_month_from_now}]: ').strip()
-    end_pred_secure = in_end_pred if in_end_pred else one_month_from_now
+
+    print("\n Forecast Date Ranges Configuration ")
+    print("In order to get a correct forecast, setting a date after the end training date is mandatory.\n"
+        f"In this case: {train_to_secure} < start_forecast_date\n")
+
+    while True:
+        in_start_pred = input(f'Start forecast from [Enter for {today}]: ').strip()
+        start_pred_secure = in_start_pred if in_start_pred else today
+        
+        try:
+            start_date_obj = parse_date(start_pred_secure)
+            
+            if start_date_obj <= train_to_date:
+                print(f" [Error] Start date must be strictly after the training end date ({train_to_secure}).\n")
+                continue
+                
+            break
+        except ValueError:
+            print(" [Error] Invalid date format. Please use YYYY-MM-DD.\n")
+
+    while True:
+        in_end_pred = input(f'End forecast on [Enter for {one_month_from_now}]: ').strip()
+        end_pred_secure = in_end_pred if in_end_pred else one_month_from_now
+        
+        try:
+            end_date_obj = parse_date(end_pred_secure)
+            
+            if end_date_obj < start_date_obj:
+                print(f" [Error] End date cannot be before the start forecast date ({start_pred_secure}).\n")
+                continue
+                
+            break
+        except ValueError:
+            print(" [Error] invalid date format. please use YYYY-MM-DD.\n")
+
+    print(f"\nConfirmed range From {start_pred_secure} to {end_pred_secure}\n")
+
+    train_to_date = datetime.strptime(train_to_secure, '%Y-%m-%d')
+    forecast_exog_start = (train_to_date + timedelta(days=1)).strftime('%Y-%m-%d')
+
+    X_exog_forecast = model.generate_exog_matrix(
+        start_date=forecast_exog_start, 
+        end_date=end_pred_secure, 
+        holidays_source=base_non_work_days
+    )
+    X_exog_forecast = X_exog_forecast[['is_month_end', 'close_month_zone']]
+
 
     forecast = model.run_sarimax(
         predict_from=start_pred_secure,
         predict_to=end_pred_secure,
         y=series,
         X_exog=X_exog,
+        X_exog_future=X_exog_forecast,
         holidays=base_non_work_days,
         params_id=meta_id
     )
 
     print('forecast made successful')
 
-    print(f'Forecast for period {start_pred} - {end_pred}: {forecast['forecast'].sum()}')
+    print(f'Forecast for period {start_pred_secure} - {end_pred_secure}: {forecast['forecast'].sum()}')
 
     save_as = input('Save file output with predictions as: ')
 
