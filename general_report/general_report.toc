@@ -43,28 +43,28 @@
 \contentsline {paragraph}{Desglose Matemático.}{29}{}%
 \contentsline {paragraph}{Entrenamiento Algorítmico y Transformaciones.}{30}{}%
 \contentsline {paragraph}{Evaluación de Métricas y Ajustes.}{31}{}%
-\contentsline {paragraph}{Implementación en el Pipeline.}{31}{}%
-\contentsline {subsubsection}{Prophet}{33}{}%
-\contentsline {paragraph}{Entrenamiento e Implementación.}{33}{}%
-\contentsline {paragraph}{Construcción del Vector de Predicción.}{34}{}%
-\contentsline {paragraph}{Evaluación de Métricas y Ajustes.}{35}{}%
-\contentsline {subsubsection}{LSTM}{36}{}%
-\contentsline {paragraph}{Desglose Matemático.}{36}{}%
-\contentsline {paragraph}{Entrenamiento.}{37}{}%
-\contentsline {paragraph}{Evaluación de Métricas y Análisis Comparativo.}{38}{}%
-\contentsline {paragraph}{Interpretación Analítica del Desempeño.}{39}{}%
-\contentsline {subsubsection}{KNN}{39}{}%
-\contentsline {paragraph}{Desglose Matemático y Complejidad Computacional.}{39}{}%
-\contentsline {paragraph}{Implementación.}{41}{}%
-\contentsline {paragraph}{Entrenamiento.}{42}{}%
-\contentsline {paragraph}{Comparación con Librerías Estándar.}{42}{}%
-\contentsline {subsubsection}{Regresión Logística}{43}{}%
-\contentsline {paragraph}{Desglose Matemático y Complejidad Computacional.}{43}{}%
-\contentsline {paragraph}{Implementación.}{44}{}%
-\contentsline {paragraph}{Entrenamiento.}{45}{}%
-\contentsline {paragraph}{Comparación con Librerías Estándar.}{46}{}%
-\contentsline {section}{\numberline {0.4}Resultados}{47}{}%
-\contentsline {subsection}{\numberline {0.4.1}Comparativa de Implementaciones}{47}{}%
-\contentsline {subsection}{\numberline {0.4.2}Hallazgos y Posibles Mejoras}{47}{}%
-\contentsline {section}{\numberline {0.5}Conclusiones}{48}{}%
-\contentsline {subsection}{\numberline {0.5.1}Propuesta de Valor e Implementación Operativa}{48}{}%
+\contentsline {paragraph}{Implementación en el Pipeline.}{32}{}%
+\contentsline {subsubsection}{Prophet}{34}{}%
+\contentsline {paragraph}{Entrenamiento e Implementación.}{34}{}%
+\contentsline {paragraph}{Construcción del Vector de Predicción.}{36}{}%
+\contentsline {paragraph}{Evaluación de Métricas y Ajustes.}{36}{}%
+\contentsline {subsubsection}{LSTM}{37}{}%
+\contentsline {paragraph}{Desglose Matemático.}{37}{}%
+\contentsline {paragraph}{Entrenamiento.}{39}{}%
+\contentsline {paragraph}{Evaluación de Métricas y Análisis Comparativo.}{40}{}%
+\contentsline {paragraph}{Interpretación Analítica del Desempeño.}{41}{}%
+\contentsline {subsubsection}{KNN}{42}{}%
+\contentsline {paragraph}{Desglose Matemático y Complejidad Computacional.}{42}{}%
+\contentsline {paragraph}{Implementación.}{43}{}%
+\contentsline {paragraph}{Entrenamiento.}{44}{}%
+\contentsline {paragraph}{Comparación con Librerías Estándar.}{45}{}%
+\contentsline {subsubsection}{Regresión Logística}{45}{}%
+\contentsline {paragraph}{Desglose Matemático y Complejidad Computacional.}{45}{}%
+\contentsline {paragraph}{Implementación.}{46}{}%
+\contentsline {paragraph}{Entrenamiento.}{48}{}%
+\contentsline {paragraph}{Comparación con Librerías Estándar.}{48}{}%
+\contentsline {section}{\numberline {0.4}Resultados}{49}{}%
+\contentsline {subsection}{\numberline {0.4.1}Comparativa de Implementaciones}{49}{}%
+\contentsline {subsection}{\numberline {0.4.2}Hallazgos y Posibles Mejoras}{50}{}%
+\contentsline {section}{\numberline {0.5}Conclusiones}{50}{}%
+\contentsline {subsection}{\numberline {0.5.1}Propuesta de Valor e Implementación Operativa}{50}{}%

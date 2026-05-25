@@ -11,6 +11,7 @@
 
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{booktabs}
 
 \usepackage{listings}
 \usepackage{xcolor}
@@ -1047,6 +1048,7 @@ master.to_csv(f"{DATA_DIR}/master.csv")
 
     \subsubsection{SARIMAX}
 
+
         \paragraph{Desglose Matemático.}
         El modelo SARIMAX (Seasonal AutoRegressive Integrated Moving Average with exogenous regressors)
         se estructura mediante parámetros que controlan tanto la estacionalidad como la tendencia histórica.
@@ -1064,11 +1066,19 @@ master.to_csv(f"{DATA_DIR}/master.csv")
         Donde las ventas o la variable objetivo $y_{t}$ dependen de las variables exógenas $X_{t}$ ponderadas por sus coeficientes
         $\beta$, más un término de error residual $u_{t}$. Este error no es un ruido aleatorio simple, sino que contiene la
         estacionalidad y la tendencia histórica, el cual se transforma mediante la metodología de Box-Jenkins y la
-        ecuación central SARIMA.
+        ecuación central SARIMA. Matemáticamente, la estructura estocástica del error se modela aplicando polinomios 
+        de rezago mediante la notación del operador $L$, donde el residuo $u_{t}$ sigue el proceso:
+
+        $$\phi_{p}(L)\Phi_{P}(L^{m})(1-L)^{d}(1-L^{m})^{D}u_{t}=\theta_{q}(L)\Theta_{Q}(L^{m})\epsilon_{t}$$
+
+        En esta expresión, $\phi$ y $\theta$ representan los polinomios autorregresivos y de media móvil no estacionales, 
+        mientras que $\Phi$ y $\Theta$ capturan los efectos estacionales a lo largo del ciclo $m$. El término $\epsilon_{t}$ 
+        denota el ruido blanco subyacente.
 
         Durante la fase de estimación, el algoritmo busca los coeficientes óptimos asumiendo que los errores siguen una distribución
-        normal con media 0 y varianza constante. A través de un método iterativo de optimización numérica por Máxima Verosimilitud,
-        se maximiza la función de Log-Verosimilitud:
+        normal con media 0 y varianza constante. La optimización numérica iterativa se ejecuta mediante el algoritmo 
+        L-BFGS (Broyden-Fletcher-Goldfarb-Shanno de memoria limitada), el cual aproxima eficientemente la inversa de la matriz hessiana 
+        para maximizar la función de Log-Verosimilitud:
 
         $$l(\Theta)=-\frac{T}{2}\ln(2\pi)-\frac{T}{2}\ln(\sigma^{2})-\frac{1}{2\sigma^{2}}\sum_{t=1}^{T}e_{t}^{2}$$
 
@@ -1099,20 +1109,61 @@ master.to_csv(f"{DATA_DIR}/master.csv")
         los coeficientes óptimos con la máxima precisión matemática posible, apoyado por el método de estimación de máxima verosimilitud.
 
         \paragraph{Evaluación de Métricas y Ajustes.}
-        La versión definitiva del modelo convergió bajo un orden general uno, cero, cero y un orden estacional uno, cero, uno, siete.
+        La versión definitiva del modelo convergió bajo un orden general (1, 0, 0) y un orden estacional (0, 1, 1, 7). 
+        Matemáticamente, esto se interpreta de la siguiente forma: el orden no estacional (1, 0, 0) indica que el comportamiento 
+        base de las ventas diarias conserva una dependencia directa con el volumen facturado exactamente un día antes $t-1$ 
+        mediante un coeficiente autorregresivo simple, sin requerir transformaciones de diferenciación lineal.
+        
+        Por su parte, el componente estacional (0, 1, 1, 7) establece que el sistema aplica una diferenciación estacional de primer grado con 
+        periodicidad de siete períodos $D=1$, modelando la serie en función de los cambios netos respecto al mismo día de la 
+        semana anterior para eliminar la estacionalidad cíclica. Asimismo, la incorporación del término de media móvil estacional 
+        $Q=1$ faculta al algoritmo para ajustar la proyección actual basándose de forma estocástica en el residuo o error de 
+        estimación cometido exactamente siete días atrás $t-7$.
+
         Bajo esta estructura, las variables comerciales de intervención temporal, cierre de mes y zona límite mensual, arrojaron niveles
         de significancia perfectos, demostrando su altísima capacidad de impacto sobre la facturación.
 
-        La sanidad matemática del sistema fue ratificada mediante el análisis del componente estocástico.
-        A través de la prueba formal de Ljung-Box, se comprobó la hipótesis nula que dictamina que los residuos se distribuyen
-        de manera independiente. Esto garantiza que el error remanente del modelo es simple ruido blanco y valida la
-        integridad predictiva del diseño estadístico.
+        La evaluación empírica del modelo sobre el conjunto de datos de validación correspondiente al mes de abril de 2026 devela un comportamiento
+        asimétrico, una notable consistencia en la aproximación del volumen agregado mensual frente a una volatilidad latente en las estimaciones
+        puntuales de periodicidad diaria.
 
-        Al someter el modelo entrenado sobre los datos reales del mes de abril, el comportamiento macroeconómico resultó sumamente preciso.
-        La facturación real de la organización cerró en 34.29 millones de pesos, mientras que la proyección generada por el algoritmo anticipó
-        un flujo de 35.20 millones de pesos. Este nivel de calibración se traduce en un desfase acumulado menor a un millón de pesos,
-        equivalente a un margen de error total porcentual de apenas 2.64\% mensual y un error absoluto medio porcentual ponderado, onocido universalmente como WMAPE,
-        de 27.30\% sobre la alta variabilidad diaria.
+        Los indicadores de rendimiento obtenidos durante este periodo de prueba se detallan en el Cuadro \ref{tab:metricas_abril_final}:
+
+        \begin{table}[H]
+            \centering
+            \caption{Métricas de evaluación del modelo SARIMAX para el horizonte de validación (Abril 2026).}
+            \label{tab:metricas_abril_final}
+            \begin{tabular}{lr}
+                \toprule
+                \textbf{Métrica} & \textbf{Valor Observado} \\
+                \midrule
+                Facturación Real Acumulada ($Y_{\text{real}}$) & 34.29 MDP \\
+                Facturación Proyectada ($\hat{Y}_{\text{pred}}$) & 33.04 MDP \\
+                Diferencia Neta Nominal ($\Delta Y$) & 1.25 MDP \\
+                Error Absoluto Acumulado ($\sum |e_t|$) & 9.75 MDP \\
+                Desviación Porcentual Mensual ($\Delta\%$) & -3.66\% \\
+                WMAPE Diario & 28.45\% \\
+                \bottomrule
+            \end{tabular}
+        \end{table}
+
+        A nivel macroeconómico y de planificación agregada, la aproximación del algoritmo demuestra una robustez significativa.
+        La facturación real acumulada de la organización cerró en $34.29$ millones de pesos (MDP), mientras que la integración de las
+        predicciones diarias modeló un flujo de $33.04$ MDP. Esta discrepancia representa un desfase nominal de $1.25$ MDP, equivalente a
+        una subestimación porcentual de apenas el $-3.66\%$. Desde la perspectiva de la gestión financiera y la toma de decisiones directivas,
+        un nivel de asertividad superior al $96\%$ en el volumen mensual consolidado posiciona al modelo como un instrumento fiable para el control 
+        presupuestal y la proyección de flujos de efectivo a mediano plazo.
+
+        Por el contrario, los errores a nivel micro estructural de escala diaria, exhibe una dinámica matemática distinta.
+        El error absoluto acumulado se situó en $9.75$ MDP, derivando en un Error Porcentual Absoluto Medio Ponderado (WMAPE) del $28.45\%$ sobre la
+        serie temporal diaria.
+        Al proyectar el horizonte diario, los errores residuales $e_t = y_t - \hat{y}_t$ se distribuyen de forma alternada entre valores positivos y negativos.
+        Al efectuar la sumatoria geométrica para consolidar el mes, estos sesgos opuestos tienden a neutralizarse mutuamente, disminuyendo drásticamente el error neto final.
+
+        En síntesis, la arquitectura matemática validada manifiesta un sesgo predictivo de carácter conservador, minimizando el riesgo de sobreestimación de ingresos.
+        El sistema resulta altamente eficiente para resolver la interrogante del volumen total transaccionado al cierre del ciclo comercial, asumiendo una
+        penalización controlada en la precisión de la distribución diaria, la cual se encuentra intrínsecamente ligada a la naturaleza estocástica y la alta volatilidad de las
+        rutas comerciales operadas.
 
         \paragraph{Implementación en el Pipeline.}
         La instanciación y ejecución del flujo analítico se encapsuló en el directorio de notebooks del proyecto.
@@ -1125,35 +1176,52 @@ master.to_csv(f"{DATA_DIR}/master.csv")
     \begin{lstlisting}[language=Python, caption={Entrenamiento, escalado y proyección del modelo estadístico final.}]
 
 master = pd.read_csv(f'{DATA_DIR}/master.csv')
-y_scaled = master['net_price'] / 1_000_000
-X = master[['is_month_end', 'close_month_zone']]
 
-y_scaled.index = pd.to_datetime(master['sale_date'])
+#seoaramos la variable target de las exogenas
+y = master['net_price']
+X = master[['non_work_day', 'is_month_end', 'close_month_zone']]
+
+
+#definimos train, test, validation
+train_cutoff = '2026-03-31'
+validation_start = '2026-04-01'
+validation_end = '2026-04-30'
+
+y.index = pd.to_datetime(master['sale_date'])
 X.index = pd.to_datetime(master['sale_date'])
 
-y_train_up_to_april = y_scaled[:'2026-04-30']
-X_train_up_to_april = X[:'2026-04-30']
+#split de datos
+y_train = y[:train_cutoff]
+y_val   = y[validation_start:validation_end]
 
-order_final = (1, 0, 0)
-seasonal_order_final = (1, 0, 1, 7)
+X_train = X[:train_cutoff]
+X_val   = X[validation_start:validation_end]
 
-model_final = SARIMAX(
-    y_train_up_to_april,
-    exog=X_train_up_to_april,
-    order=order_final,
-    seasonal_order=seasonal_order_final,
+pd.options.display.float_format = '{:.8f}'.format
+y_scaled = y/1000000
+
+y_train = y_scaled[:train_cutoff]
+y_test  = y_scaled[validation_start:]
+
+#eliminacion de non_work_day debido a redundancia para el modelo en primeras pruebas
+X_optimized = X_train[['is_month_end', 'close_month_zone']]
+
+
+order_6 = (1, 0, 0)
+seasonal_order_6 = (0,1,1,7)
+
+model_6 = SARIMAX(
+    y_train,
+    exog=X_optimized[['is_month_end', 'close_month_zone']],
+    order=order_6,
+    seasonal_order=seasonal_order_6,
     enforce_stationarity=False,
     enforce_invertibility=False
 )
 
-fit_res_final = model_final.fit(disp=False)
+fit_res_6 = model_6.fit(disp=False)
+print(fit_res_6.summary())
 
-meta_final = save_metadata(
-    order=list(order_final),
-    seasonal_order=list(seasonal_order_final),
-    fit_obj=fit_res_final,
-    file_path=f'{MODELS_DIR}/sarimax_production.json'
-)
     \end{lstlisting}
 
 \begin{figure}[H]
@@ -1306,7 +1374,29 @@ meta_final = save_metadata(
                 Como conclusión de la iteración temporal, el Estado Oculto obtenido se somete a una proyección lineal final
                 para arrojar la predicción de la red en ese instante temporal específico:
                 $$\hat{y}_{t}=W_{y}h_{t}+b_{y}$$
-            \end{itemize}   
+            \end{itemize}
+
+            Una vez obtenida la proyección $\hat{y}_{t}$ en el flujo hacia adelante, el sistema debe cuantificar la magnitud de sus equivocaciones
+            para ajustar la totalidad de sus parámetros internos $\Theta$, esto es, las matrices de pesos $W$ y vectores de sesgo $b$.
+            
+            Tratándose de un problema de regresión continua, la red minimiza la función de pérdida de Error Cuadrático Medio, la cual penaliza
+            exponencialmente los desfases más severos:
+            
+            $$J(\Theta)=\frac{1}{T}\sum_{t=1}^{T}(\hat{y}_{t}-y_{t})^{2}$$
+            
+            Para reducir empíricamente este margen de error, la arquitectura implementa el algoritmo de Retropropagación a través del Tiempo, BPTT, por sus siglas en inglés.
+            Este método desenrolla matemáticamente la red a lo largo de toda la secuencia histórica de los datos, calculando los gradientes de la función de pérdida con
+            respecto a cada peso temporal utilizando la regla de la cadena:
+            
+            $$\nabla_{\Theta} J = \sum_{t=1}^{T} \frac{\partial J_{t}}{\partial \Theta}$$
+            
+            La actualización de las ponderaciones se delega a un optimizador algorítmico. En las arquitecturas LSTM modernas, el estándar es el optimizador
+            Adam (\textit{Adaptive Moment Estimation}). Este mecanismo adapta dinámicamente la tasa de aprendizaje $\eta$ para cada parámetro de la red
+            calculando medias móviles exponenciales del gradiente $m_{t}$ y de su magnitud al cuadrado $v_{t}$:
+            
+            $$\Theta_{t}=\Theta_{t-1}-\eta\frac{\hat{m}_{t}}{\sqrt{\hat{v}_{t}}+\epsilon}$$
+            
+            Al combinar BPTT con el algoritmo Adam, la red LSTM logra descender por la superficie de la función de costo de manera estable y acelerada, evitando quedar atrapada en mínimos locales o sufrir desvanecimientos abruptos del gradiente durante el entrenamiento con las secuencias históricas.
 
             \paragraph{Entrenamiento.}
             La arquitectura de memoria a corto y largo plazo, se instanció bajo un diseño secuencial profundo.

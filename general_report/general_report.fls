@@ -55,6 +55,8 @@ INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/graphics-def/pdftex.def
 INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/graphics-def/pdftex.def
 INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/float/float.sty
 INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/float/float.sty
+INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/booktabs/booktabs.sty
+INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/booktabs/booktabs.sty
 INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/listings/listings.sty
 INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/listings/listings.sty
 INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/listings/lstpatch.sty

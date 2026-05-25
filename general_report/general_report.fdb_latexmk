@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1779571693.65189 "/Users/angelvelasco/Library/CloudStorage/GoogleDrive-angel.emma.velasco@gmail.com/My Drive/Documentos/urvet/JAPI/general_report/general_report.tex" "general_report.pdf" "general_report" 1779571695.08734 0
-  "/Users/angelvelasco/Library/CloudStorage/GoogleDrive-angel.emma.velasco@gmail.com/My Drive/Documentos/urvet/JAPI/general_report/general_report.tex" 1779571691.98538 105527 dbb8033bce10f81e7feb63789c01d050 ""
+["pdflatex"] 1779682823.94347 "/Users/angelvelasco/Library/CloudStorage/GoogleDrive-angel.emma.velasco@gmail.com/My Drive/Documentos/urvet/JAPI/general_report/general_report.tex" "general_report.pdf" "general_report" 1779682825.31176 0
+  "/Users/angelvelasco/Library/CloudStorage/GoogleDrive-angel.emma.velasco@gmail.com/My Drive/Documentos/urvet/JAPI/general_report/general_report.tex" 1779682823.75626 111813 8483091229a1fcf57e01bc0adc55c7e1 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/tctt0900.tfm" 1136768653 1536 bda3e6bf9784a4cc572c754e0c3eeb00 ""
@@ -69,6 +69,7 @@
   "/usr/local/texlive/2026/texmf-dist/tex/latex/base/inputenc.sty" 1738182759 5048 0270515b828149155424600fd2d58ac5 ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/base/report.cls" 1748806692 23203 f495085ac76be4e20c5e1e88646a241e ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/base/size11.clo" 1748806692 8464 f339f4d5391fbe0425b2d94c90e6819e ""
+  "/usr/local/texlive/2026/texmf-dist/tex/latex/booktabs/booktabs.sty" 1579038678 6078 f1cb470c9199e7110a27851508ed7a5c ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/datetime/datetime-defaults.sty" 1427500626 4105 4c80eaed8cd4f9a80cc6244c0adeb81f ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/datetime/datetime.sty" 1427500626 27587 b023ffe1328fa89e7f133201d87029de ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/datetime/dt-spanish.def" 1427500626 3822 6d82bbc9be6e4499d2045c1ccd87b112 ""
@@ -100,12 +101,12 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1779254532 5573038 b99aad5e4898a9034e953632f940512b ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1774209607 3636776 dc5fa9b6b1453b9d196cd42edf876004 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774209515 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
-  "general_report.aux" 1779571695.00496 16514 df0aa62ff493f1da370c6928e5cad80e "pdflatex"
-  "general_report.tex" 1779571691.98538 105527 dbb8033bce10f81e7feb63789c01d050 ""
-  "general_report.toc" 1779571695.00741 5109 ad26b258bed1e4adb50e9c3c060148e3 "pdflatex"
+  "general_report.aux" 1779682825.26028 16767 0684ad4dae0c9485d532cd888b9f03fd "pdflatex"
+  "general_report.tex" 1779682823.75626 111813 8483091229a1fcf57e01bc0adc55c7e1 ""
+  "general_report.toc" 1779682825.26199 5109 29e49067ddda49ab3044559b1ba4c420 "pdflatex"
   "img/boxplot_diario_crudo.png" 1779267215.06463 17914 e792a18a69bce3e00f2c471862c12ff1 ""
   "img/boxplot_diario_limpio.png" 1779267580.13109 18633 a8e1935cef8d12e3200b788df4f015e0 ""
-  "img/comparativa_abril.png" 1779280928.811 36771 1fdfbcffb750fd6984295064b7bc5ee7 ""
+  "img/comparativa_abril.png" 1779680972.75831 36989 e2778a875784f683c9f2feef3c0383d9 ""
   "img/comparativa_cedis.png" 1779265461.2704 42951 4af9c400364e14e2dcdc6a1e3be4a3c4 ""
   "img/curva_aprendizaje_lstm.png" 1779283842.26117 26921 7add952304cc86be594eb9ffdba93006 ""
   "img/descomposicion_serie.png" 1779268528.86788 293135 02d64353e7c96aff6c557ee5c1180427 ""
@@ -115,7 +116,7 @@
   "img/evolucion_diaria_limpia.png" 1779267552.17719 114454 c5b0631b7c8ad6ceeb97394dadef92f7 ""
   "img/knn_manual_vs_sklearn.png" 1779284912.55938 34042 fdd70e4a3173d4c404f3b5035f74ac6f ""
   "img/lr_manual_vs_sklearn.png" 1779285563.99289 37602 5cd1de08f09b56966fa2e2a064f02c55 ""
-  "img/pronostico_intervalos.png" 1779280947.3079 128960 4dcfa5b0917814f497b84900c573648d ""
+  "img/pronostico_intervalos.png" 1779680998.84927 129260 61260dd82a9109f81e2674d9a1885613 ""
   "img/pronostico_lstm.png" 1779283876.75201 90599 69056faa33bd360cf391ca4bd7bd5f1a ""
   "img/prophet_forecast.png" 1779281672.17391 135075 1175b6a1dcf9e3cf68456d2933f41b5b ""
   (generated)
