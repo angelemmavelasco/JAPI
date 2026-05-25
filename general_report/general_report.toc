@@ -51,20 +51,20 @@
 \contentsline {subsubsection}{LSTM}{37}{}%
 \contentsline {paragraph}{Desglose Matemático.}{37}{}%
 \contentsline {paragraph}{Entrenamiento.}{39}{}%
-\contentsline {paragraph}{Evaluación de Métricas y Análisis Comparativo.}{40}{}%
-\contentsline {paragraph}{Interpretación Analítica del Desempeño.}{41}{}%
-\contentsline {subsubsection}{KNN}{42}{}%
-\contentsline {paragraph}{Desglose Matemático y Complejidad Computacional.}{42}{}%
-\contentsline {paragraph}{Implementación.}{43}{}%
-\contentsline {paragraph}{Entrenamiento.}{44}{}%
-\contentsline {paragraph}{Comparación con Librerías Estándar.}{45}{}%
-\contentsline {subsubsection}{Regresión Logística}{45}{}%
-\contentsline {paragraph}{Desglose Matemático y Complejidad Computacional.}{45}{}%
+\contentsline {paragraph}{Evaluación de Métricas y Análisis Comparativo.}{43}{}%
+\contentsline {paragraph}{Interpretación Analítica del Desempeño.}{43}{}%
+\contentsline {subsubsection}{KNN}{44}{}%
+\contentsline {paragraph}{Desglose Matemático y Complejidad Computacional.}{44}{}%
 \contentsline {paragraph}{Implementación.}{46}{}%
-\contentsline {paragraph}{Entrenamiento.}{48}{}%
-\contentsline {paragraph}{Comparación con Librerías Estándar.}{48}{}%
-\contentsline {section}{\numberline {0.4}Resultados}{49}{}%
-\contentsline {subsection}{\numberline {0.4.1}Comparativa de Implementaciones}{49}{}%
-\contentsline {subsection}{\numberline {0.4.2}Hallazgos y Posibles Mejoras}{50}{}%
-\contentsline {section}{\numberline {0.5}Conclusiones}{50}{}%
-\contentsline {subsection}{\numberline {0.5.1}Propuesta de Valor e Implementación Operativa}{50}{}%
+\contentsline {paragraph}{Entrenamiento.}{47}{}%
+\contentsline {paragraph}{Comparación con Librerías Estándar.}{47}{}%
+\contentsline {subsubsection}{Regresión Logística}{48}{}%
+\contentsline {paragraph}{Desglose Matemático y Complejidad Computacional.}{48}{}%
+\contentsline {paragraph}{Implementación.}{49}{}%
+\contentsline {paragraph}{Entrenamiento.}{50}{}%
+\contentsline {paragraph}{Comparación con Librerías Estándar.}{50}{}%
+\contentsline {section}{\numberline {0.4}Resultados}{51}{}%
+\contentsline {subsection}{\numberline {0.4.1}Comparativa de Implementaciones}{51}{}%
+\contentsline {subsection}{\numberline {0.4.2}Hallazgos y Posibles Mejoras}{52}{}%
+\contentsline {section}{\numberline {0.5}Conclusiones}{52}{}%
+\contentsline {subsection}{\numberline {0.5.1}Propuesta de Valor e Implementación Operativa}{53}{}%

@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1779687071.80106 "/Users/angelvelasco/Library/CloudStorage/GoogleDrive-angel.emma.velasco@gmail.com/My Drive/Documentos/urvet/JAPI/general_report/general_report.tex" "general_report.pdf" "general_report" 1779687073.13267 0
-  "/Users/angelvelasco/Library/CloudStorage/GoogleDrive-angel.emma.velasco@gmail.com/My Drive/Documentos/urvet/JAPI/general_report/general_report.tex" 1779687071.62242 111883 006a5dd57a3157795e6c87f78d16c230 ""
+["pdflatex"] 1779689230.0648 "/Users/angelvelasco/Library/CloudStorage/GoogleDrive-angel.emma.velasco@gmail.com/My Drive/Documentos/urvet/JAPI/general_report/general_report.tex" "general_report.pdf" "general_report" 1779689231.38848 0
+  "/Users/angelvelasco/Library/CloudStorage/GoogleDrive-angel.emma.velasco@gmail.com/My Drive/Documentos/urvet/JAPI/general_report/general_report.tex" 1779689230.46545 117164 9a445d44e957d32f091d32acfeaaf461 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/tctt0900.tfm" 1136768653 1536 bda3e6bf9784a4cc572c754e0c3eeb00 ""
@@ -101,9 +101,9 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1779254532 5573038 b99aad5e4898a9034e953632f940512b ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1774209607 3636776 dc5fa9b6b1453b9d196cd42edf876004 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774209515 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
-  "general_report.aux" 1779687073.08221 16767 0684ad4dae0c9485d532cd888b9f03fd "pdflatex"
-  "general_report.tex" 1779687071.62242 111883 006a5dd57a3157795e6c87f78d16c230 ""
-  "general_report.toc" 1779687073.0839 5109 29e49067ddda49ab3044559b1ba4c420 "pdflatex"
+  "general_report.aux" 1779689231.34151 16767 15ff26112062203771b644911cdccac0 "pdflatex"
+  "general_report.tex" 1779689230.46545 117164 9a445d44e957d32f091d32acfeaaf461 ""
+  "general_report.toc" 1779689231.3432 5109 65efeb26d8a5d5fd90528ae0e48443c0 "pdflatex"
   "img/boxplot_diario_crudo.png" 1779267215.06463 17914 e792a18a69bce3e00f2c471862c12ff1 ""
   "img/boxplot_diario_limpio.png" 1779267580.13109 18633 a8e1935cef8d12e3200b788df4f015e0 ""
   "img/comparativa_abril.png" 1779680972.75831 36989 e2778a875784f683c9f2feef3c0383d9 ""

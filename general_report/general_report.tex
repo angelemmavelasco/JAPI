@@ -1409,29 +1409,135 @@ print(fit_res_6.summary())
             error cuadrático medio, ejecutando el entrenamiento a lo largo de veinticinco iteraciones completas. Resultó imperativo desactivar
             el mezclado aleatorio de los lotes de datos para preservar la estricta cronología de la serie temporal.
 
+            Además, con el objetivo de visualizar los efectos de un tipo de escalado sobre otro, se inició un bucle \textit{for}
+            que evaluaba el mismo conjunto de datos con distintos escaladores. Al final, se propuso la implementación de un \textit{score}
+            combinado denotado por la siguiente función:
+
+            \begin{equation}
+            \text{Score} = (\text{WMAPE} \times 0.3) + (|\text{TPD}| \times 0.7)
+            \end{equation}
+
+            Donde las métricas constituyentes se definen matemáticamente de la siguiente manera:
+
+            \begin{equation}
+            \text{WMAPE} = \frac{\sum_{t=1}^{n} |y_t - \hat{y}_t|}{\sum_{t=1}^{n} y_t} \times 100
+            \end{equation}
+
+            El WMAPE (\textit{Weighted Mean Absolute Percentage Error}) representa el Error Porcentual Absoluto Medio Ponderado. Esta métrica evalúa la precisión del modelo en el día a día (punto a punto), midiendo la magnitud absoluta de las desviaciones diarias sin que los días de bajo volumen distorsionen el porcentaje global.
+
+            \begin{equation}
+            \text{TPD} = \frac{\sum_{t=1}^{n} \hat{y}_t - \sum_{t=1}^{n} y_t}{\sum_{t=1}^{n} y_t} \times 100
+            \end{equation}
+
+            El TPD (\textit{Total Percentage Difference}) representa la diferencia total acumulada. A diferencia del WMAPE, esta métrica no utiliza valores absolutos en las diferencias diarias, lo que permite evaluar el comportamiento neto al cierre del periodo. Un valor negativo indica una subestimación global (el modelo pronosticó menos de lo real), mientras que uno positivo indica una sobreestimación.
+
+            \subsection*{Variables y Consideraciones del Score:}
+            \begin{itemize}
+                \item \textbf{$y_t$}: Valor real observado en el día $t$ (Monto Neto de Venta).
+                \item \textbf{$\hat{y}_t$}: Valor pronosticado por la red LSTM para el día $t$.
+                \item \textbf{$n$}: Número total de días evaluados en el mes de operación ($n = 30$ para abril).
+                \item \textbf{Ponderación (30/70):} La función de selección otorga un peso del 30\% al error operativo diario (WMAPE) y un 70\% al error de cierre mensual (TPD). Cabe destacar que para la ejecución del algoritmo de selección se utiliza el valor absoluto del TPD ($|\text{TPD}|$), garantizando que tanto el sesgo por defecto como por exceso sean penalizados por igual en la búsqueda del modelo óptimo.
+            \end{itemize}
+
         \begin{lstlisting}[language=Python, caption=Arquitectura secuencial y entrenamiento de la red neuronal LSTM.]
-    model = Sequential()
 
-    model.add(LSTM(units=50, activation='relu', return_sequences=True, 
-                input_shape=(X_train_lstm.shape[1], X_train_lstm.shape[2])))
-    model.add(Dropout(0.2))
+#establecemos los escaladores a usar en un diccionario
+scalers_to_test = {
+    "MinMaxScaler": (MinMaxScaler(feature_range=(0, 1)), MinMaxScaler(feature_range=(0, 1))),
+    "StandardScaler": (StandardScaler(), StandardScaler()),
+    "RobustScaler": (RobustScaler(), RobustScaler())
+}
 
-    model.add(LSTM(units=50, activation='relu'))
-    model.add(Dropout(0.2))
 
-    model.add(Dense(units=1))
+best_score = float('inf')
+best_wape = float('inf')
+best_tpd = float('inf')
+best_scaler_name = None
+best_preds = None
+
+lstm_dir = os.path.join(MODELS_DIR, "lstm")
+os.makedirs(lstm_dir, exist_ok=True)
+
+
+for name, (scaler_x, scaler_y) in scalers_to_test.items():
+    print(f'\n\nevaluacion de {name}')
+
+    #escalamiento de los datos de entrenamiento
+    X_train_scaled = scaler_x.fit_transform(X_train_raw)
+    y_train_scaled = scaler_y.fit_transform(y_train_raw)
+
+    X_test_scaled = scaler_x.transform(X_test_raw)
+    y_test_scaled = scaler_y.transform(y_test_raw)
+
+    #reestablecimiento de la forma ya que tensorflow recibe de la forma (n_muestras, timesteps, n_features)
+    X_train_lstm = X_train_scaled.reshape((X_train_scaled.shape[0], 1, X_train_scaled.shape[1]))
+    X_test_lstm = X_test_scaled.reshape((X_test_scaled.shape[0], 1, X_test_scaled.shape[1]))
+    
+    #seteo de la estructura del modelo
+    model = Sequential([
+        LSTM(units=50, activation='relu', return_sequences=True, 
+             input_shape=(X_train_lstm.shape[1], X_train_lstm.shape[2])), #50 neuronas
+        Dropout(0.2),
+        LSTM(units=50, activation='relu'), #50 neuronas
+        Dropout(0.2),
+        Dense(units=1) #solo una de salida
+    ])
 
     model.compile(optimizer='adam', loss='mse')
 
+    #entrenamiento del modelo
     history = model.fit(
         X_train_lstm,
         y_train_scaled,
         epochs=25,
         batch_size=32,
         validation_data=(X_test_lstm, y_test_scaled),
-        verbose=1,
+        verbose=0, 
         shuffle=False
     )
+
+
+    # generacion de predicciones y desescalamiento
+    pred_scaled = model.predict(X_test_lstm, verbose=0)
+    predicciones_lstm = scaler_y.inverse_transform(pred_scaled)
+
+    real_array = y_test_raw.values.flatten()
+    pred_array = predicciones_lstm.flatten()
+
+    print('\nmetricas obtenidas')
+    wape_puro = (np.sum(np.abs(real_array - pred_array)) / np.sum(real_array)) * 100
+    tpd = ((pred_array.sum() - real_array.sum()) / real_array.sum()) * 100
+
+    print(f'WMAPE {name}: {wape_puro:.2f} %')
+    print(f'TPD {name}: {tpd:.2} %')
+
+    combined_score = (0.30 * wape_puro) + (0.70 * np.abs(tpd))
+
+    print(f'Score {name}: {combined_score:.2f}')
+
+    if combined_score < best_score:
+        best_score = combined_score
+        best_wape = wape_puro
+        best_tpd = tpd
+        best_scaler_name = name
+        best_preds = pred_array
+        
+        #guardar el modelo en formato nativo Keras
+        model.save(os.path.join(lstm_dir, "best_lstm_model.keras"))
+        
+        #guardar los escaladores asociados al modelo ganador
+        joblib.dump(scaler_x, os.path.join(lstm_dir, "scaler_x.pkl"))
+        joblib.dump(scaler_y, os.path.join(lstm_dir, "scaler_y.pkl"))
+
+        history_df = pd.DataFrame(history.history)
+        history_df.to_csv(os.path.join(lstm_dir, "history_ganador.csv"), index=False)
+
+
+
+print(f"\n\n\n scaler seleccionado -> {best_scaler_name}")
+print(f"score combinado optimo -> {best_score:.2f}")
+print(f"WMAPE obtenido -> {best_wape:.2f}%")
+print(f"Diferencia Porcentual Mensual -> {best_tpd:.2f}%")
         \end{lstlisting}
 
         \begin{figure}[H]
@@ -1721,7 +1827,7 @@ se obtuvieron métricas de rendimiento que permiten contrastar la viabilidad ope
     \begin{itemize}
         \item Modelo SARIMAX.\\
         Se consolidó como la arquitectura más equilibrada y asertiva. Logró un error absoluto medio porcentual ponderado del
-        27.3\% sobre la varianza diaria y un desfase macroscópico de apenas 2.64\% mensual. Su capacidad para asimilar las variables exógenas le
+        28.45\% sobre la varianza diaria y un desfase macroscópico de apenas -3.66\% mensual. Su capacidad para asimilar las variables exógenas le
         permitió proyectar los picos de facturación masiva con extrema precisión geométrica.
 
         \item Modelo Prophet.\\
@@ -1730,8 +1836,8 @@ se obtuvieron métricas de rendimiento que permiten contrastar la viabilidad ope
         Esto indica que el algoritmo suaviza excesivamente la serie y falla al intentar ubicar el día exacto de las fluctuaciones comerciales.
 
         \item Modelo LSTM.\\
-        La red neuronal profunda exhibió un rendimiento intermedio en la escala diaria con un error del 30.64\%, pero falló significativamente en el
-        acumulado mensual, subestimando la demanda real en un 14.41\%. Su comportamiento conservador derivó de la escasez relativa de datos históricos,
+        La red neuronal profunda exhibió un rendimiento intermedio en la escala diaria con un error del 30.59\%, pero falló significativamente en el
+        acumulado mensual, subestimando la demanda real en un 13.05\%. Su comportamiento conservador derivó de la escasez relativa de datos históricos,
         impidiendo que los tensores asimilaran la agresividad financiera de los cierres operativos.
 
     \end{itemize}
