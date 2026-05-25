@@ -1457,9 +1457,11 @@ print(fit_res_6.summary())
 
             \paragraph{Interpretación Analítica del Desempeño.}
             La subestimación del volumen mensual es un fenómeno característico de las redes neuronales profundas cuando operan sobre conjuntos de datos restringidos.
-            Al disponer de un histórico de transacciones inferior a mil registros diarios, la red logró mapear de forma excelente
-            la morfología general de las fluctuaciones comerciales como los valles de fin de semana y las recuperaciones de mitad de semana,
-            pero careció de la densidad de ejemplos necesaria para dimensionar la agresividad financiera de los cierres de mes. 
+            Al disponer de un histórico de ventas diarias inferior a mil, la red logró mapear de forma excelente
+            la morfología general de las fluctuaciones comerciales como los valles de fin de semana y las recuperaciones de mitad de semana. 
+
+            Otro logro importante de la red, es que fue el único modelo capaz de identificar días inhábiles o festividades, y no le resultó
+            redundante como en el caso de los modelo SARIMAX y Prophet
 
             Al integrar penalizaciones de abandono aleatorio para evitar el sobreajuste, la arquitectura optó por una proyección
             estadísticamente conservadora. En contraste, el modelo SARIMAX sumó el impacto de los regresores exógenos de manera directa
